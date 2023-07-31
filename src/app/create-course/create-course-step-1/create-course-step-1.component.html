@@ -1,0 +1,60 @@
+<div [formGroup]="form" class="course-details-form">
+
+    <mat-form-field apperance="outline"> 
+    <!--Input field is wrapped my mat-form-field-->
+        <mat-label>Course Title</mat-label>
+        <input matInput  formControlName="title" #title>
+
+       <mat-hint align="end">
+            {{title.value.length}}/60
+       </mat-hint>
+
+       <mat-error *ngIf="courseTitle.errors?.minlength">
+            A minimum length of 5 is required
+       </mat-error>
+
+    </mat-form-field>
+
+    <mat-radio-group class="course-type" formControlName="courseType">
+        <mat-radio-button value="free">Free</mat-radio-button>
+        <mat-radio-button value="premium">Premium</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+        <mat-select formControlName="category" placeholder="Select">
+            <mat-option value="beginners">Beginners</mat-option>
+            <mat-option value="intermediate">Intermediate</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field apperance="outline">
+        
+        <input matInput formControlName="releasedAt" placeholder="Release date"
+        [matDatepicker]="releasedAtPicker">
+
+        <mat-datepicker-toggle matSuffix [for]="releasedAtPicker">
+
+        </mat-datepicker-toggle>
+        
+        <mat-datepicker #releasedAtPicker>
+
+        </mat-datepicker>
+
+    </mat-form-field>
+
+    <mat-checkbox color="primary" formControlName="downloadsAllowed">
+        Downloads Allowed? 
+    </mat-checkbox>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="longDescription">
+
+        </textarea>
+    </mat-form-field>
+ 
+
+</div>
+
+
+
